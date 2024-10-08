@@ -1,6 +1,6 @@
 package sit.int202.demo.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service  //บอก spring boot ว่ามันคือ service นะ
 public class OfficeService {
-    @Autowired //ไปเอา officeRepository มาให้ด้วยนะ
     private OfficeRepository officeRepository;
     public List<Office> getAllOffices() { // เมธอดเพื่อดึงข้อมูลออฟฟิศทั้งหมด
         return officeRepository.findAll(); // คืนค่าข้อมูลออฟฟิศทั้งหมด
@@ -35,7 +34,7 @@ public class OfficeService {
     public Office updateOffice(Office office) { //เมธอดที่อัปเดตข้อมูลออฟฟิศ
 
         if (office.getOfficeCode()==null || !officeRepository.existsById(office.getOfficeCode())) {
-            // ถ้ามีหรือ officeCode เป็น null ให้โยนข้อผิดพลาด HTTP 400 พร้อม"Can't update, Office id '%s' does not exists "
+            // ถ้ามีหรือ officeCode เป็น null ให้โยนข้อผิดพลาด HTTP 400
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST ,
                     String.format("Can't update, Office id '%s' does not exists ",
                             office.getOfficeCode()));
@@ -48,7 +47,7 @@ public class OfficeService {
         if (office.getOfficeCode()==null) {  // เช็คว่า office มีค่าหรือไม่
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST ,
                     String.format("Can't delete, Office id '%s' does not exists ",
-                            office.getOfficeCode()));
+                            officeCode));
         }
         // ลบออฟฟิศจากฐานข้อมูล
         officeRepository.save(office);  // ลบออฟฟิศจากฐานข้อมูล
