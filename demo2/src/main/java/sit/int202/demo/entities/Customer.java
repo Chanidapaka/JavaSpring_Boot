@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class Customer {
     @Id
     @Column(name = "customerNumber", nullable = false)
-    private Integer id;
+    private Integer id; //การMap คือDatabase ชื่อ customerNumber | // Java ชื่อ id
 
     @Column(name = "customerName", nullable = false, length = 50)
     private String customerName;
