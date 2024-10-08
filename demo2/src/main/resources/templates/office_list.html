@@ -19,7 +19,8 @@
     <div class="row" th:each="o : ${offices}">
         <div class="col-2" th:text="${o.officeCode}"/>
         <div class="col-2"><a th:href="@{'/offices?officeCode='+ ${o.officeCode}}">
-            <span data-th-text="${o.city}"></span></a></div>
+            <span data-th-text="${o.city}"/></a>
+        </div>
         <div class="col-2" th:text="${o.phone}"/>
         <div class="col-3" th:text="${o.addressLine1}"/>
         <div class="col-2" th:text="${o.country}"/>
