@@ -9,13 +9,13 @@
 <h1>Office Details</h1>
 <hr>
 <div class="container p4 m4">
-        Office code: <span th:text="office.officeCode"/><br>
-        City : <span th:text="office.city"/><br>
-        Phone: <span th:text="office.phone"/><br>
-        Address: <span th:text="office.address"/><br>
-        Country: <span th:text="office.country"/><br>
-        Postal Code: <span th:text="office.PostalCode"/><br>
-        Territory: <span th:text="office.territory"/><br>
+        Office code: <span th:text="${office.officeCode}"/><br>
+        City : <span th:text="${office.city}"/><br>
+        Phone: <span th:text="${office.phone}"/><br>
+        Address: <span th:text="${office.addressLine1}"/><br>
+        Country: <span th:text="${office.country}"/><br>
+        Postal Code: <span th:text="${office.PostalCode}"/><br>
+        Territory: <span th:text="${office.territory}"/><br>
     <hr>
     <a href="/offices/all"><button>All Offices</button></a>
 </div>
