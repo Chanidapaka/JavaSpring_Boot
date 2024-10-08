@@ -21,13 +21,21 @@ public class OfficeController {
     public OfficeController(OfficeService service) {
         this.service = service;
     }
+    @GetMapping("/delete")
+    public String deleteOffice(@RequestParam("id") String officeCode, Model model) {
+        Office office = service.deleteOffice(officeCode);
+        model.addAttribute("office", office);
+        model.addAttribute("message", "Office deleted successfully");
+        return "offices_details";
+    }
+
     @GetMapping("") // เมธอดที่จะรับคำขอ GET ที่ /offices
-        public String getOfficeById(@RequestParam String officeCode, Model model) {
+    public String getOfficeById(@RequestParam String officeCode, Model model) {
         // ดึงข้อมูลออฟฟิศตาม officeCode
-            Office office = service.getOffice(officeCode);
-            model.addAttribute("office", office);
-            return "office_details";
-        }
+        Office office = service.getOffice(officeCode);
+        model.addAttribute("office", office);
+        return "office_details";
+    }
 
 
     @GetMapping("/all") //เอาแค่get   --เราจะ/ไปทางนี้ทีหลัง2

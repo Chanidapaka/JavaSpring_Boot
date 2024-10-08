@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org" xmlns: xmlns:>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,20 +10,22 @@
 <hr>
 <div class="container p4 m4">
     <div class="row">
+        <div class="row" th:each="o : ${offices}">
+            <div class="col-2" th:text="${o.officeCode}"/>
+            <div class="col-2">
+                <a th:href="@{'/offices?officeCode='+ ${o.officeCode}}" th:text="${o.city}"/>
+            </div>
+            <div class="col-2" th:text="${o.phone}"/>
+            <div class="col-3" th:text="${o.addressLine1}"/>
+            <div class="col-2" th:text="${o.country}"/>
+            <div class="col-1">    <a th:href="@{'/offices/delete?officeCode='+${o.officeCode}}">
+                <button style="clor: darked"> X </button>    </a>
+        </div>
         <div class="col-2">office Code</div>
         <div class="col-2">City</div>
         <div class="col-2">Phone #</div>
         <div class="col-3">Address</div>
         <div class="col-2">Country</div>
-    </div>
-    <div class="row" th:each="o : ${offices}">
-        <div class="col-2" th:text="${o.officeCode}"/>
-        <div class="col-2">
-            <a th:href="@{'/offices?officeCode='+ ${o.officeCode}}" th:text="${o.city}"/>
-        </div>
-        <div class="col-2" th:text="${o.phone}"/>
-        <div class="col-3" th:text="${o.addressLine1}"/>
-        <div class="col-2" th:text="${o.country}"/>
     </div>
     <hr>
     <a href="/home"><button>Home</button></a>
