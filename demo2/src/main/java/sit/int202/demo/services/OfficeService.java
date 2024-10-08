@@ -1,6 +1,7 @@
 package sit.int202.demo.services;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service  //บอก spring boot ว่ามันคือ service นะ
 public class OfficeService {
+    @Autowired
     private OfficeRepository officeRepository;
     public List<Office> getAllOffices() { // เมธอดเพื่อดึงข้อมูลออฟฟิศทั้งหมด
         return officeRepository.findAll(); // คืนค่าข้อมูลออฟฟิศทั้งหมด
